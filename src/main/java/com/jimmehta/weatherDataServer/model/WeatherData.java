@@ -1,7 +1,7 @@
 package com.jimmehta.weatherDataServer.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table
@@ -9,7 +9,7 @@ public class WeatherData {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
-        private Date weatherDataTimeStamp;
+        private Timestamp weatherDataTimeStamp;
         private float temperature;
         private float duePoint;
         private int   precipitation;
@@ -20,7 +20,7 @@ public class WeatherData {
         }
 
     // Constructor
-    public WeatherData(Date weatherDataTimeStamp, float temperature, float duePoint, int precipitation) {
+    public WeatherData(Timestamp weatherDataTimeStamp, float temperature, float duePoint, int precipitation) {
         this.weatherDataTimeStamp = weatherDataTimeStamp;
         this.temperature = temperature;
         this.duePoint = duePoint;
@@ -31,7 +31,7 @@ public class WeatherData {
         return id;
     }
 
-    public Date getWeatherDataTimeStamp() {
+    public Timestamp getWeatherDataTimeStamp() {
         return weatherDataTimeStamp;
     }
 

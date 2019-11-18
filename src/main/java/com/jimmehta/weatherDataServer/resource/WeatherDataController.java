@@ -3,6 +3,7 @@ package com.jimmehta.weatherDataServer.resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import com.jimmehta.weatherDataServer.model.WeatherData;
 import com.jimmehta.weatherDataServer.service.WeatherDataService;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -32,7 +34,7 @@ public class WeatherDataController {
     }
 
     @GetMapping("/{measurementTime}")
-    public ResponseEntity getSingleWeatherData(@PathVariable Date measurementTime) {
+    public ResponseEntity getSingleWeatherData(@PathVariable Timestamp measurementTime) {
         LOGGER.info("******* getting Single measurement *******");
         WeatherData weatherData = weatherDataService.getSingleWeatherData(measurementTime);
         if (weatherData == null) {
@@ -49,7 +51,7 @@ public class WeatherDataController {
     }
 
     @GetMapping("/stat/{measurementTime}")
-    public ResponseEntity getStatSingleWeatherData(@PathVariable Date measurementTime) {
+    public ResponseEntity getStatSingleWeatherData(@PathVariable Timestamp measurementTime) {
         LOGGER.info("******* getting Single measurementTime *******");
         WeatherData weatherData = weatherDataService.getSingleWeatherData(measurementTime);
         if (weatherData == null) {
@@ -79,7 +81,7 @@ public class WeatherDataController {
     }
 
     @GetMapping("/stat/{fromDateTime}")
-    public ResponseEntity getAllWeatherDataFromDateTime(@PathVariable Date fromDateTime) {
+    public ResponseEntity getAllWeatherDataFromDateTime(@PathVariable Timestamp fromDateTime) {
         LOGGER.info("******* getting Single fromDateTime *******");
         List<WeatherData> weatherData = weatherDataService.getAllWeatherDataFromDateTime(fromDateTime);
         if (weatherData == null) {
@@ -89,7 +91,7 @@ public class WeatherDataController {
     }
 
     @GetMapping("/stat/{toDateTime}")
-    public ResponseEntity getAllWeatherDataToDateTime(@PathVariable Date toDateTime) {
+    public ResponseEntity getAllWeatherDataToDateTime(@PathVariable Timestamp toDateTime) {
         LOGGER.info("******* getting Single toDateTime *******");
         List<WeatherData> weatherData = weatherDataService.getAllWeatherDataToDateTime(toDateTime);
         if (weatherData == null) {
