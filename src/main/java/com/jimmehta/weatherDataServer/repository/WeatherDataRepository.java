@@ -11,13 +11,13 @@ import java.util.List;
 
 @Repository
     public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> {
-        @Query("FROM WeatherData WHERE weatherDataTimeStamp = ?1")
+//        @Query("FROM WeatherData WHERE weatherDataTimeStamp = ?1")
         WeatherData findByWeatherDataTimeStamp(Date weatherDataTimeStamp1);
 
-        @Query("FROM WeatherData WHERE duePoint = ?1")
+//        @Query("FROM WeatherData WHERE duePoint = ?1")
         List<WeatherData> findAllByDuePoint(float duePoint);
 
-        @Query("FROM WeatherData WHERE precipitation = ?1")
+//        @Query("FROM WeatherData WHERE precipitation = ?1")
         List<WeatherData> findAllByPrecipitation(float precipitation);
 
         @Query("FROM WeatherData WHERE weatherDataTimeStamp > ?1")

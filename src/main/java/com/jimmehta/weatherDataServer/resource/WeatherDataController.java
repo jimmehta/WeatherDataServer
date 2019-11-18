@@ -25,7 +25,7 @@ public class WeatherDataController {
         this.weatherDataService = weatherDataService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity getAllWeatherData() {
         LOGGER.info("******* getting all the measurements *******");
         return ResponseEntity.ok(weatherDataService.getAllWeatherData());
@@ -41,7 +41,7 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Object> createWeatherData(@RequestBody WeatherData weatherData) {
         LOGGER.info("******* creating Single weatherData *******");
         ResponseEntity weatherDataSaved = weatherDataService.createWeatherData(weatherData);
@@ -58,7 +58,7 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
-    @GetMapping("/stat/{duePoint}")
+    @GetMapping("/stat/duePoint/{duePoint}")
     public ResponseEntity getAllWeatherDataForDuePoint(@PathVariable float duePoint) {
         LOGGER.info("******* getting Single duePoint *******");
         List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForDuePoint(duePoint);
@@ -68,7 +68,7 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
-    @GetMapping("/stat/{precipitation}")
+    @GetMapping("/stat/precipitation/{precipitation}")
     public ResponseEntity getAllWeatherDataForprecipitation(@PathVariable int precipitation) {
         LOGGER.info("******* getting Single precipitation *******");
         List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForPrecipitation(precipitation);

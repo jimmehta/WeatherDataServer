@@ -1,0 +1,1 @@
+insert into weatherdata (weatherDataTimeStamp, temperature, duePoint, precipitation) values ('2015-09-01', 22.4, 18.6, 142.2);

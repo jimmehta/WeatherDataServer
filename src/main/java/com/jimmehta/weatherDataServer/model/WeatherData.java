@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-    @Table
-    public class WeatherData {
-        @javax.persistence.Id
+@Table
+public class WeatherData {
+        @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long Id;
+        private Long id;
         private Date weatherDataTimeStamp;
         private float temperature;
         private float duePoint;
@@ -28,10 +28,10 @@ import java.sql.Date;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    public Date getWeatherDataTimeStamp(Date measurmentTime) {
+    public Date getWeatherDataTimeStamp() {
         return weatherDataTimeStamp;
     }
 
