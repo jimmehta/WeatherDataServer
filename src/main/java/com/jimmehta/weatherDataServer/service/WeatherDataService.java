@@ -13,8 +13,9 @@ public interface WeatherDataService {
     List<WeatherData> getAllWeatherData();
     WeatherData getSingleWeatherData(Timestamp weatherDataTimeStamp);
     ResponseEntity<WeatherData> createWeatherData(WeatherData weatherData);
+    List<WeatherData> getAllWeatherDataForTemperature(float temperature);
     List<WeatherData> getAllWeatherDataForDuePoint(float duePoint);
-    List<WeatherData> getAllWeatherDataForPrecipitation(int precipitation);
+    List<WeatherData> getAllWeatherDataForPrecipitation(float precipitation);
     List<WeatherData> getAllWeatherDataFromDateTime(Timestamp fromDateTime);
     List<WeatherData> getAllWeatherDataToDateTime(Timestamp toDateTime);
 }

@@ -1,6 +1,9 @@
 package com.jimmehta.weatherDataServer.repository;
 
 import com.jimmehta.weatherDataServer.model.WeatherData;
+import com.jimmehta.weatherDataServer.service.WeatherDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +18,8 @@ import java.util.List;
     public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> {
 //        @Query("FROM WeatherData WHERE weatherDataTimeStamp = ?1")
         WeatherData findByWeatherDataTimeStamp(Timestamp weatherDataTimeStamp1);
+
+        List<WeatherData> findAllByTemperature(float temperature);
 
 //        @Query("FROM WeatherData WHERE duePoint = ?1")
         List<WeatherData> findAllByDuePoint(float duePoint);

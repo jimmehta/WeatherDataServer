@@ -46,12 +46,17 @@ public class WeatherDataServiceImpl implements WeatherDataService{
         return ResponseEntity.ok(weatherDataSaved);
     }
 
+    public List<WeatherData> getAllWeatherDataForTemperature(float temperature) {
+        return weatherDataRepository.findAllByTemperature(temperature);
+    }
+
     public List<WeatherData> getAllWeatherDataForDuePoint(float duePoint) {
         return weatherDataRepository.findAllByDuePoint(duePoint);
     }
 
-    public List<WeatherData> getAllWeatherDataForPrecipitation(int precipitation) {
-    return weatherDataRepository.findAllByPrecipitation(precipitation);
+    public List<WeatherData> getAllWeatherDataForPrecipitation(float precipitation) {
+        LOGGER.info("******* getting Single Precipitation ServiceImpl: {} *******", precipitation);
+        return weatherDataRepository.findAllByPrecipitation(precipitation);
     }
 
     public List<WeatherData> getAllWeatherDataFromDateTime(Timestamp fromDateTime) {

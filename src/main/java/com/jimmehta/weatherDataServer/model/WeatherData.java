@@ -12,7 +12,7 @@ public class WeatherData {
         private Timestamp weatherDataTimeStamp;
         private float temperature;
         private float duePoint;
-        private int   precipitation;
+        private float precipitation;
 
         //Default constructor
         public WeatherData() {
@@ -20,7 +20,7 @@ public class WeatherData {
         }
 
     // Constructor
-    public WeatherData(Timestamp weatherDataTimeStamp, float temperature, float duePoint, int precipitation) {
+    public WeatherData(Timestamp weatherDataTimeStamp, float temperature, float duePoint, float precipitation) {
         this.weatherDataTimeStamp = weatherDataTimeStamp;
         this.temperature = temperature;
         this.duePoint = duePoint;
@@ -43,7 +43,7 @@ public class WeatherData {
         return duePoint;
     }
 
-    public int getPrecipitation() {
+    public float getPrecipitation() {
         return precipitation;
     }
 }

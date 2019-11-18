@@ -60,6 +60,16 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
+    @GetMapping("/stat/temperature/{temperature}")
+    public ResponseEntity getAllWeatherDataForTemperature(@PathVariable float temperature) {
+        LOGGER.info("******* getting Single temperature *******");
+        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForTemperature(temperature);
+        if (weatherData == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(weatherData);
+    }
+
     @GetMapping("/stat/duePoint/{duePoint}")
     public ResponseEntity getAllWeatherDataForDuePoint(@PathVariable float duePoint) {
         LOGGER.info("******* getting Single duePoint *******");
@@ -71,7 +81,7 @@ public class WeatherDataController {
     }
 
     @GetMapping("/stat/precipitation/{precipitation}")
-    public ResponseEntity getAllWeatherDataForprecipitation(@PathVariable int precipitation) {
+    public ResponseEntity getAllWeatherDataForprecipitation(@PathVariable float precipitation) {
         LOGGER.info("******* getting Single precipitation *******");
         List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForPrecipitation(precipitation);
         if (weatherData == null) {
