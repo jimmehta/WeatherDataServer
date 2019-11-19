@@ -49,11 +49,11 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     }
 
     public List<WeatherData> getAllWeatherDataFromDateTime(Timestamp fromDateTime) {
-        return weatherDataRepository.findAllByFromDateTime(fromDateTime);
+        return weatherDataRepository.findAllByWeatherDataTimeStampAfter(fromDateTime);
     }
 
     public List<WeatherData> getAllWeatherDataToDateTime(Timestamp toDateTime) {
-        return weatherDataRepository.findAllByToDateTime(toDateTime);
+        return weatherDataRepository.findAllByWeatherDataTimeStampBefore(toDateTime);
     }
 
     public List<WeatherData> getAllWeatherDataTimeStamp(Timestamp weatherDataTimeStamp) {

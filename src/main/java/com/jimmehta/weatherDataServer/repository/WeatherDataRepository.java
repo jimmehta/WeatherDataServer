@@ -24,8 +24,8 @@ import java.util.List;
         List<WeatherData> findAllByMetricName(float value);
 
         @Query("FROM WeatherData WHERE weatherDataTimeStamp > ?1")
-        List<WeatherData> findAllByFromDateTime(Timestamp fromDateTime);
+        List<WeatherData> findAllByWeatherDataTimeStampAfter(Timestamp fromDateTime);
 
         @Query("FROM WeatherData WHERE weatherDataTimeStamp < ?1")
-        List<WeatherData> findAllByToDateTime(Timestamp toDateTime);
+        List<WeatherData> findAllByWeatherDataTimeStampBefore(Timestamp toDateTime);
 }
