@@ -1,1 +1,1 @@
-insert into weatherdata (weatherDataTimeStamp, temperature, duePoint, precipitation) values ('2015-09-01T16:00:00.000Z',22.4,18.6,142.2);
+insert into weatherdata (weatherDataTimeStamp, metricName, val) values ('2015-09-01T16:00:00.000Z', 'temperature', 22.4);

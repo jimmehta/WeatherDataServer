@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import com.jimmehta.weatherDataServer.model.WeatherData;
 import com.jimmehta.weatherDataServer.service.WeatherDataService;
 
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,6 +45,17 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
+    @GetMapping("/{measurementTime}")
+    public ResponseEntity getWeatherDataTimeStamp(Timestamp measurementTime) {
+        LOGGER.info("******* getting Single measurement *******");
+        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataTimeStamp(measurementTime);
+        if (weatherData == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(weatherData);
+    }
+
+
     @PostMapping
     public ResponseEntity<Object> createWeatherData(@RequestBody WeatherData weatherData) {
         LOGGER.info("******* creating Single weatherData *******");
@@ -60,34 +73,15 @@ public class WeatherDataController {
         return ResponseEntity.ok(weatherData);
     }
 
-    @GetMapping("/stat/temperature/{temperature}")
-    public ResponseEntity getAllWeatherDataForTemperature(@PathVariable float temperature) {
-        LOGGER.info("******* getting Single temperature *******");
-        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForTemperature(temperature);
+    @GetMapping("/stat/{metricName}/{value}")
+    public ResponseEntity getAllWeatherDataForMetricName(@PathVariable String metricName, @PathVariable float value) {
+        LOGGER.info("******* getting Single {} {} *******", metricName, value);
+        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForMetricName(value);
         if (weatherData == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(weatherData);
-    }
-
-    @GetMapping("/stat/duePoint/{duePoint}")
-    public ResponseEntity getAllWeatherDataForDuePoint(@PathVariable float duePoint) {
-        LOGGER.info("******* getting Single duePoint *******");
-        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForDuePoint(duePoint);
-        if (weatherData == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(weatherData);
-    }
-
-    @GetMapping("/stat/precipitation/{precipitation}")
-    public ResponseEntity getAllWeatherDataForprecipitation(@PathVariable float precipitation) {
-        LOGGER.info("******* getting Single precipitation *******");
-        List<WeatherData> weatherData = weatherDataService.getAllWeatherDataForPrecipitation(precipitation);
-        if (weatherData == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(weatherData);
+        List<WeatherData> weatherData2 = weatherDataService.getAllWeatherDataTimeStamp(weatherData.get(0).getWeatherDataTimeStamp());
+        return ResponseEntity.ok(weatherData2);
     }
 
     @GetMapping("/stat/{fromDateTime}")

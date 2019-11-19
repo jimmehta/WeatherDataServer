@@ -2,20 +2,17 @@ package com.jimmehta.weatherDataServer.service;
 
 import com.jimmehta.weatherDataServer.model.WeatherData;
 import com.jimmehta.weatherDataServer.repository.WeatherDataRepository;
-import com.jimmehta.weatherDataServer.resource.WeatherDataController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Service
-public class WeatherDataServiceImpl implements WeatherDataService{
+public class WeatherDataServiceImpl implements WeatherDataService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WeatherDataService.class);
 
@@ -46,17 +43,9 @@ public class WeatherDataServiceImpl implements WeatherDataService{
         return ResponseEntity.ok(weatherDataSaved);
     }
 
-    public List<WeatherData> getAllWeatherDataForTemperature(float temperature) {
-        return weatherDataRepository.findAllByTemperature(temperature);
-    }
-
-    public List<WeatherData> getAllWeatherDataForDuePoint(float duePoint) {
-        return weatherDataRepository.findAllByDuePoint(duePoint);
-    }
-
-    public List<WeatherData> getAllWeatherDataForPrecipitation(float precipitation) {
-        LOGGER.info("******* getting Single Precipitation ServiceImpl: {} *******", precipitation);
-        return weatherDataRepository.findAllByPrecipitation(precipitation);
+    public List<WeatherData> getAllWeatherDataForMetricName(float value) {
+        LOGGER.info("******* getting Single Precipitation ServiceImpl: {} *******", value);
+        return weatherDataRepository.findAllByMetricName(value);
     }
 
     public List<WeatherData> getAllWeatherDataFromDateTime(Timestamp fromDateTime) {
@@ -65,5 +54,9 @@ public class WeatherDataServiceImpl implements WeatherDataService{
 
     public List<WeatherData> getAllWeatherDataToDateTime(Timestamp toDateTime) {
         return weatherDataRepository.findAllByToDateTime(toDateTime);
+    }
+
+    public List<WeatherData> getAllWeatherDataTimeStamp(Timestamp weatherDataTimeStamp) {
+        return weatherDataRepository.findAllByTimeStamp(weatherDataTimeStamp);
     }
 }

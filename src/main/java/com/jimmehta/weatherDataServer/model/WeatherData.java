@@ -6,44 +6,39 @@ import java.sql.Timestamp;
 @Entity
 @Table
 public class WeatherData {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private Timestamp weatherDataTimeStamp;
-        private float temperature;
-        private float duePoint;
-        private float precipitation;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    private Timestamp weatherDataTimeStamp;
+    private String     MetricName;
+    private float      value;
 
         //Default constructor
         public WeatherData() {
 
         }
 
-    // Constructor
-    public WeatherData(Timestamp weatherDataTimeStamp, float temperature, float duePoint, float precipitation) {
+    public WeatherData(Long id, Timestamp weatherDataTimeStamp, String metricName, float value) {
+        Id = id;
         this.weatherDataTimeStamp = weatherDataTimeStamp;
-        this.temperature = temperature;
-        this.duePoint = duePoint;
-        this.precipitation = precipitation;
+        MetricName = metricName;
+        this.value = value;
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public Timestamp getWeatherDataTimeStamp() {
         return weatherDataTimeStamp;
     }
 
-    public float getTemperature() {
-        return temperature;
+    public String getMetricName() {
+        return MetricName;
     }
 
-    public float getDuePoint() {
-        return duePoint;
-    }
-
-    public float getPrecipitation() {
-        return precipitation;
+    public float getValue() {
+        return value;
     }
 }

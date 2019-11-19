@@ -19,13 +19,9 @@ import java.util.List;
 //        @Query("FROM WeatherData WHERE weatherDataTimeStamp = ?1")
         WeatherData findByWeatherDataTimeStamp(Timestamp weatherDataTimeStamp1);
 
-        List<WeatherData> findAllByTemperature(float temperature);
+        List<WeatherData> findAllByTimeStamp(Timestamp weatherDataTimeStamp);
 
-//        @Query("FROM WeatherData WHERE duePoint = ?1")
-        List<WeatherData> findAllByDuePoint(float duePoint);
-
-//        @Query("FROM WeatherData WHERE precipitation = ?1")
-        List<WeatherData> findAllByPrecipitation(float precipitation);
+        List<WeatherData> findAllByMetricName(float value);
 
         @Query("FROM WeatherData WHERE weatherDataTimeStamp > ?1")
         List<WeatherData> findAllByFromDateTime(Timestamp fromDateTime);
